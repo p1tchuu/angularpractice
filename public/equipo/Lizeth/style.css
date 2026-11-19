@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(135deg, #ffd6e7, #d6e4ff);
+    background-attachment: fixed;
+    color: #333333;
+}
+
+.encabezado {
+    text-align: center;
+    padding: 50px 20px 30px;
+}
+
+.avatar {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: #e0559a;
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 16px rgba(224, 85, 154, 0.4);
+}
+
+.encabezado h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.subtitulo {
+    color: #e0559a;
+    font-size: 1.1rem;
+}
+
+.contenedor {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+}
+
+section {
+    margin-bottom: 32px;
+}
+
+section h2 {
+    margin-bottom: 14px;
+    font-size: 1.4rem;
+}
+
+.sobre-mi {
+    background: #ffffff;
+    padding: 24px 28px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.rejilla {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 18px;
+}
+
+.recuadro {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.recuadro:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.icono {
+    font-size: 2.4rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.recuadro h3 {
+    color: #e0559a;
+    margin-bottom: 6px;
+}
+
+.pie {
+    text-align: center;
+    padding: 20px;
+    color: #555555;
+    font-size: 0.9rem;
+}

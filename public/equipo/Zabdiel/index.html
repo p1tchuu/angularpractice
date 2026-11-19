@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zabdiel | Presentación</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b1a;
+      --bg-soft: #12122a;
+      --card: rgba(255, 255, 255, 0.05);
+      --border: rgba(255, 255, 255, 0.10);
+      --text: #e8e8f5;
+      --muted: #9a9ab8;
+      --accent: #7c5cff;
+      --accent-2: #00d4ff;
+      --accent-3: #ff5ca8;
+      --grad: linear-gradient(135deg, var(--accent), var(--accent-2));
+      --radius: 20px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Fondo animado con manchas de color */
+    .blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(110px);
+      opacity: 0.35;
+      z-index: -1;
+      animation: float 18s ease-in-out infinite;
+    }
+    .blob.b1 { width: 480px; height: 480px; background: var(--accent); top: -120px; left: -120px; }
+    .blob.b2 { width: 420px; height: 420px; background: var(--accent-2); bottom: -100px; right: -100px; animation-delay: -6s; }
+    .blob.b3 { width: 320px; height: 320px; background: var(--accent-3); top: 45%; left: 55%; animation-delay: -12s; opacity: 0.2; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33%      { transform: translate(60px, 40px) scale(1.1); }
+      66%      { transform: translate(-40px, 70px) scale(0.95); }
+    }
+
+    /* Navegación */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 8%;
+      background: rgba(11, 11, 26, 0.65);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.4rem;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-decoration: none;
+    }
+    nav ul { display: flex; gap: 32px; list-style: none; }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 400;
+      position: relative;
+      transition: color 0.3s;
+    }
+    nav ul a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -6px;
+      width: 0; height: 2px;
+      background: var(--grad);
+      transition: width 0.3s;
+    }
+    nav ul a:hover { color: #fff; }
+    nav ul a:hover::after { width: 100%; }
+
+    section { padding: 110px 8% 60px; min-height: 100vh; }
+
+    /* Hero */
+    #inicio {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+    .hero-text { flex: 1 1 420px; }
+    .tag {
+      display: inline-block;
+      padding: 6px 16px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      background: var(--card);
+      color: var(--accent-2);
+      font-size: 0.85rem;
+      margin-bottom: 22px;
+    }
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .grad-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .typing {
+      font-size: 1.4rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+      min-height: 2.2rem;
+    }
+    .typing span { color: var(--accent-3); font-weight: 600; }
+    .typing .cursor {
+      display: inline-block;
+      width: 2px; height: 1.3rem;
+      background: var(--accent-3);
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .hero-text p.desc { color: var(--muted); max-width: 520px; margin-bottom: 34px; }
+
+    .btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn {
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: inline-block;
+    }
+    .btn.primary { background: var(--grad); color: #fff; box-shadow: 0 10px 30px rgba(124, 92, 255, 0.4); }
+    .btn.ghost { border: 1px solid var(--border); color: var(--text); background: var(--card); }
+    .btn:hover { transform: translateY(-4px); }
+    .btn.primary:hover { box-shadow: 0 14px 40px rgba(124, 92, 255, 0.6); }
+
+    /* Avatar */
+    .hero-visual { flex: 1 1 320px; display: flex; justify-content: center; }
+    .avatar-wrap {
+      position: relative;
+      width: 320px; height: 320px;
+    }
+    .avatar-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      background: conic-gradient(var(--accent), var(--accent-2), var(--accent-3), var(--accent));
+      animation: spin 8s linear infinite;
+    }
+    .avatar {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: var(--bg-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      font-weight: 800;
+      z-index: 1;
+    }
+    /* Para usar tu foto: <img src="foto.jpg"> dentro de .avatar */
+    .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Títulos de sección */
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .section-sub { text-align: center; color: var(--muted); margin-bottom: 56px; }
+
+    /* Tarjetas */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 34px 28px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 50px rgba(124, 92, 255, 0.25);
+    }
+    .icon {
+      width: 58px; height: 58px;
+      border-radius: 16px;
+      background: var(--grad);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.7rem;
+      margin-bottom: 20px;
+    }
+    .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: 0.95rem; }
+
+    /* Sobre mí */
+    .about-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 44px;
+      backdrop-filter: blur(10px);
+    }
+    .about-box p { color: var(--muted); margin-bottom: 16px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin-top: 34px;
+    }
+    .stat { text-align: center; padding: 20px; border-radius: 16px; background: rgba(255,255,255,0.04); }
+    .stat strong {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .stat span { color: var(--muted); font-size: 0.9rem; }
+
+    /* Habilidades */
+    .skills { max-width: 800px; margin: 0 auto; display: grid; gap: 26px; }
+    .skill-head { display: flex; justify-content: space-between; margin-bottom: 8px; font-weight: 600; }
+    .bar { height: 10px; background: rgba(255,255,255,0.08); border-radius: 50px; overflow: hidden; }
+    .fill {
+      height: 100%;
+      width: 0;
+      border-radius: 50px;
+      background: var(--grad);
+      transition: width 1.6s cubic-bezier(.22,1,.36,1);
+    }
+
+    /* Contacto */
+    .contact { text-align: center; max-width: 700px; margin: 0 auto; }
+    .socials { display: flex; justify-content: center; gap: 18px; margin-top: 36px; flex-wrap: wrap; }
+    .socials a {
+      padding: 12px 26px;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .socials a:hover { background: var(--grad); transform: translateY(-4px); border-color: transparent; }
+
+    footer { text-align: center; padding: 30px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
+
+    /* Animación de aparición al hacer scroll */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s, transform 0.9s; }
+    .reveal.show { opacity: 1; transform: none; }
+
+    @media (max-width: 760px) {
+      nav ul { display: none; }
+      #inicio { text-align: center; justify-content: center; }
+      .hero-text p.desc { margin-inline: auto; }
+      .btns { justify-content: center; }
+      .avatar-wrap { width: 240px; height: 240px; }
+      .about-box { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+
+  <nav>
+    <a href="#inicio" class="logo">Zabdiel.</a>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- INICIO -->
+  <section id="inicio">
+    <div class="hero-text">
+      <span class="tag">👋 ¡Bienvenido a mi presentación!</span>
+      <h1>Hola, soy <span class="grad-text">Zabdiel</span></h1>
+      <div class="typing">Soy <span id="typed"></span><span class="cursor"></span></div>
+      <p class="desc">
+        Me apasiona aprender, crear y mejorar cada día. Aquí te cuento quién soy,
+        qué sé hacer y los proyectos en los que he trabajado.
+      </p>
+      <div class="btns">
+        <a href="#proyectos" class="btn primary">Ver proyectos</a>
+        <a href="#contacto" class="btn ghost">Contáctame</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="avatar-wrap">
+        <div class="avatar">Z</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi">
+    <h2 class="section-title reveal">Sobre <span class="grad-text">mí</span></h2>
+    <p class="section-sub reveal">Un poco de mi historia</p>
+    <div class="about-box reveal">
+      <p>
+        Soy estudiante con muchas ganas de crecer en el mundo de la tecnología.
+        Disfruto resolver problemas, trabajar en equipo y aprender cosas nuevas todos los días.
+      </p>
+      <p>
+        Escribe aquí más sobre ti: tu carrera, tus metas, tus pasatiempos
+        y lo que te hace diferente.
+      </p>
+      <div class="stats">
+        <div class="stat"><strong data-count="5">0</strong><span>Proyectos</span></div>
+        <div class="stat"><strong data-count="3">0</strong><span>Años estudiando</span></div>
+        <div class="stat"><strong data-count="10">0</strong><span>Tecnologías</span></div>
+        <div class="stat"><strong data-count="100">0</strong><span>% Compromiso</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HABILIDADES -->
+  <section id="habilidades">
+    <h2 class="section-title reveal">Mis <span class="grad-text">habilidades</span></h2>
+    <p class="section-sub reveal">Lo que domino y lo que sigo aprendiendo</p>
+    <div class="skills reveal">
+      <div>
+        <div class="skill-head"><span>HTML y CSS</span><span>90%</span></div>
+        <div class="bar"><div class="fill" data-width="90%"></div></div>
+      </div>
+      <div>
+        <div class="skill-head"><span>JavaScript</span><span>75%</span></div>
+        <div class="bar"><div class="fill" data-width="75%"></div></div>
+      </div>
+      <div>
+        <div class="skill-head"><span>Git y GitHub</span><span>70%</span></div>
+        <div class="bar"><div class="fill" data-width="70%"></div></div>
+      </div>
+      <div>
+        <div class="skill-head"><span>Trabajo en equipo</span><span>95%</span></div>
+        <div class="bar"><div class="fill" data-width="95%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos">
+    <h2 class="section-title reveal">Mis <span class="grad-text">proyectos</span></h2>
+    <p class="section-sub reveal">Algunas cosas en las que he trabajado</p>
+    <div class="grid">
+      <div class="card reveal">
+        <div class="icon">🌐</div>
+        <h3>Proyecto Web</h3>
+        <p>Describe aquí tu proyecto: qué hace, qué tecnologías usaste y qué aprendiste.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">📱</div>
+        <h3>Proyecto Móvil</h3>
+        <p>Otro proyecto destacado. Puedes agregar enlaces a GitHub o a una demo.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon">🎮</div>
+        <h3>Proyecto Creativo</h3>
+        <p>Un juego, una app o cualquier cosa que quieras mostrar con orgullo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="contact reveal">
+      <h2 class="section-title">Hablemos <span class="grad-text">pronto</span></h2>
+      <p class="section-sub">¿Tienes una idea o quieres trabajar conmigo? Escríbeme.</p>
+      <a href="mailto:tucorreo@ejemplo.com" class="btn primary">Enviar correo</a>
+      <div class="socials">
+        <a href="#" target="_blank">GitHub</a>
+        <a href="#" target="_blank">LinkedIn</a>
+        <a href="#" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Zabdiel · Hecho con HTML y CSS 💜</footer>
+
+  <script>
+    // Efecto de escritura
+    const words = ['estudiante', 'creativo', 'desarrollador', 'apasionado por aprender'];
+    const typed = document.getElementById('typed');
+    let w = 0, c = 0, deleting = false;
+    function type() {
+      const word = words[w];
+      typed.textContent = word.substring(0, c);
+      if (!deleting && c < word.length) { c++; setTimeout(type, 110); }
+      else if (!deleting) { deleting = true; setTimeout(type, 1400); }
+      else if (c > 0) { c--; setTimeout(type, 55); }
+      else { deleting = false; w = (w + 1) % words.length; setTimeout(type, 300); }
+    }
+    type();
+
+    // Aparición al hacer scroll + barras y contadores
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        entry.target.querySelectorAll('.fill').forEach(f => f.style.width = f.dataset.width);
+        entry.target.querySelectorAll('[data-count]').forEach(el => {
+          const target = +el.dataset.count;
+          let n = 0;
+          const step = Math.max(1, Math.ceil(target / 40));
+          const timer = setInterval(() => {
+            n = Math.min(n + step, target);
+            el.textContent = n;
+            if (n >= target) clearInterval(timer);
+          }, 40);
+        });
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
